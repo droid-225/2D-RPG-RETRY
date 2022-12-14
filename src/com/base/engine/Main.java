@@ -50,7 +50,7 @@ public class Main {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glLoadIdentity();
 		
-		//draw
+		game.render();
 		
 		Display.update();
 		Display.sync(60);
