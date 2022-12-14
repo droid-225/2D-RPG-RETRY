@@ -1,0 +1,135 @@
+// Change log / tutorial
+// Future me please for the love of god think of this as a change log
+// Both of us know how much Benny changes old shit
+// Look at the program while you parse through this
+Video 1: 12/14/2022
+//Setup
+- Create new project
+- Make copy of  LWJGL library folder from Programmin\Java to project folder 
+- Right click on project folder
+-> Build path
+--> Add libraries...
+---> User Library
+----> User Libraries
+-----> New...
+------> Add JARs... (only if  LWJGL lib was copied to project folder)
+-------> Navigate to lib folder and add JARs...
+--------> Add library
+---------> apply and close
+- Right click project folder
+-> Build path
+--> Configure Build Path
+---> Run/Debug Settings
+----> New...
+-----> Java Application
+------> VM arguments (might need to redo this after main class is made)
+-------> Enter -Djava.library.path=""C:\Users\aryan\eclipse-workspace\2D_RPG_RETRY\lib\natives"
+-------> Apply and Close
+//End of Setup
+
+- Create new package for game engine
+- Create main class in engine package
+- Create main method
+-> Write "initDisplay();"
+- Create initDisplay method (private static void initDisplay())
+-> Write Display.setDisplayMode(new DisplayMode(800,600));
+// import any imports as they come up (usually from lwjgl)
+
+-> Write Display.create();
+-> Write Keyboard.create();
+-> Surround above code in try catch block
+--> In catch block Write Logger.getLogger(Main.class.getName()).log(Level.SEVERE,  null, ex); and set its condition to LWJGLException ex
+
+- Goto main method
+-> Write initGl();
+
+- Create initGL method
+- import static org.lwjgl.opengl.GL11.*;
+- Goto initGL method
+-> Write glMatrixMode(GL_PROJECTION);
+-> Write glLoadIdentity();
+-> Write glOrtho(0,Display.getWidth(),0,Display.getHeight(),-1,1);
+-> Write glMatrixMode(GL_MODELVIEW);
+-> glDisable(GL_DEPTH_TEST); // since we're doing 2D
+-> glClearColor(0,0,0,0);
+
+- Goto main method
+-> Write gameLoop();
+
+- Create gameLoop method
+-> Create while loop with condition !Display.isCloseRequested()
+--> Write getInput(); // all three of these are inside the while loop, hence the '-->'
+--> Write update();
+--> Write render();
+
+- Move initGL method above gameLoop method
+
+- Create getInput method // these 3 methods are below intiGL and above gameLoop methods
+- Create update method
+- Create render method // following writes are in render method
+-> Write glClear(GL_COLOR_BUFFER_BIT); // clears screen
+-> glLoadIdentity();
+-> Write //draw <- that is a comment in the code itself (placeholder)
+-> Write Display.update();
+-> Write Display.sync(60); // runs game at 60 fps
+
+- Goto initDisplay method
+-> Write Display.setVSyncEnabled(true); // in try
+
+- Goto main method
+-> Write cleanUp();
+
+- Create cleanUp method //above initDisplay method
+-> Write Display.destory(); 
+-> Write Keyboard.destory();
+
+- Goto main method
+-> Write initGame(); // under initGl();
+
+- Create initGame method // under main method
+
+-Create new class called Game
+-> Create getInput method
+-> Create update method
+-> Create render method
+
+- Goto Main class
+-> create new instance of the Game class (private static Game game;)
+
+- Goto initGame method
+-> Write game = new Game();
+
+- Goto update method
+-> Write game.getInput();
+
+- Goto render method
+-> Remove //draw <- the placeholder comment from before
+-> Write game.render();
+
+- Close Game class
+
+- Run Main class // have a sigh of relief that something worked after coding this much (if a blank window pops up)
+
+- Create GameObject class
+-> Add 'abstarct' between public and class // we're only 21:53 into the video :o
+-> Create private float x // felt cute might delete these later - Benny
+-> Create private float y
+-> Create private float sx // size of x
+-> Create private float sy // size of y
+-> Create private Animation anim // there will be an error for Animation, don't worry about it
+
+- Create update method
+- Create render method
+-> Create getters for the size floats (x, y, sx, and sy) // Write return statments for all of them too
+ 
+- Create Animation class in engine package // remove previous error for Animation
+-> Create global variable private ArrayList<Sprite> frames // there will be an error for Sprite
+-> Create global variable private int cutFrame
+
+- Create a contstructor for the Animation class
+-> Write frames = new ArrayList<Sprite>();
+- Create render method
+Stopped at 27:30
+
+
+
