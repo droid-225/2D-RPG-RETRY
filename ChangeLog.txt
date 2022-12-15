@@ -124,12 +124,85 @@ Video 1: 12/14/2022
  
 - Create Animation class in engine package // remove previous error for Animation
 -> Create global variable private ArrayList<Sprite> frames // there will be an error for Sprite
--> Create global variable private int cutFrame
+-> Create global variable private int curFrame // for current frame
 
 - Create a contstructor for the Animation class
 -> Write frames = new ArrayList<Sprite>();
 - Create render method
-Stopped at 27:30
+- Replace "Sprite" with "Frame" // making frames an arraylist of Frames
+
+- Create Frame class
+
+- Goto Animation class
+-> Write frames.get(curFrame); in render method
+-> Write temp.render();
+
+- Goto Frame class
+-> Create render method
+
+- Goto Animation class
+-> Make temp.render the condition of a if statement
+--> Write curFrame++; // inside if statement
+
+- Goto Frame class
+-> Change void in render method with boolean
+
+- Goto Animation class
+-> Create a new Frame object named temp equal to frames.get(curFrame); // frames.get(curFrame) we wrote before
+-> Write curFrame %= frames.size(); in if statement
+
+- Goto Frame class
+-> Declare new private int length
+-> Declare new private Sprite spr
+-> Create a constructor with parameters Sprite spr, int length
+--> Instantiate this.spr = spr
+--> Instantiate this.lenth = length
+-> Declare new private int numDisplayed // number of frames already displayed
+- Goto constructor
+-> Instantiate numDisplayed = 0
+
+- Goto render method
+-> Write numDisplayed++;
+-> Write spr.render(); // above numDisplayed++
+-> Create if statement with condition numDisplayed >= length
+--> Set numDisplayed = 0
+--> Return true
+
+- Create Sprite class
+-> Declare new private float r // red value
+-> Declare new private float g // green
+-> Declare new private float b // blue
+-> Create render method
+-> Declare private float sx // size x
+-> Declare private float sy // size y
+-> Import static org.lwjgl.opengl.GL11.*;
+
+- Goto render method
+-> Write glBegin(GL_QUADS);
+
+- Goto GameObject class
+-> Delete sx and sy and thier getter methods
+
+- Goto render method in Sprite class
+-> write glEnd(); // under glBegin
+-> Write glVertex2f(0,0); // between glBegin and glEnd
+-> Write glVertex2f(0,sy);
+-> Write glVertex2f(sx,sy);
+-> Write glVertex2f(sx,0); // dimensions of a quadralateral
+-> Write glColor3f(r,g,b); // above glBegin
+
+- Create constructor with parameters float r, float g, float b, float sx, float sy
+-> Instantiate this.r = r;
+-> Instantiate this.b = b;
+-> Instantiate this.g = g;
+-> Instantiate this.sx = sx;
+-> Instantiate this.sy = sy;
+// End of Video 1
+
+
+
+
+
 
 
 
