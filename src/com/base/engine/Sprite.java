@@ -10,7 +10,7 @@ public class Sprite {
 	private float sx; // size x
 	private float sy; // size y
 	
-	public void Sprite(float r, float g, float b, float sx, float sy) {
+	public Sprite(float r, float g, float b, float sx, float sy) {
 		this.r = r;
 		this.g = g;
 		this.b = b;
@@ -28,5 +28,21 @@ public class Sprite {
 		glVertex2f(sx,0);
 		
 		glEnd();
+	}
+	
+	public float getSX() {
+		return sx;
+	}
+	
+	public float getSY() {
+		return sy;
+	}
+	
+	public void setSX(float sx) {
+		this.sx = sx;
+	}
+	
+	public void setSY(float sy) {
+		this.sy = sy;
 	}
 }

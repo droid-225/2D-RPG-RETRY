@@ -199,6 +199,52 @@ Video 1: 12/14/2022
 -> Instantiate this.sy = sy;
 // End of Video 1
 
+// Video 2 12/16/2022
+- Goto GameObject class
+-> Replace private Animation anim with private Sprite spr;
+-> Import static org.lwjgl.opengl.GL11.*;
+
+- Goto render method
+-> Write spr.render();
+-> Write glTranslatef(x,y,0); // above spr.render
+-> Write glPushMatrix(); // above glTranslatef
+-> Write glPopMatrix(); // below spr.render
+
+- Create new Physics class
+-> Create checkCollision method, return type boolean, parameters GameObject go1, GameObject go2
+--> Return false // placeholder
+
+- Goto Sprite class
+-> Create setter and getter methods for sx and sy
+
+- Goto GameObject class
+-> Create getter methods for the sx and sy of Sprite spr
+
+- Goto checkCollision method in Physics class
+-> Declare new Rectangle r1 
+-> Import java.awt.Rectangle
+-> On the same line, Initialize r1 = new Rectangle((int)go1.getX(), (int)go1.getSX(), (int)go1.getY(), (int)go1.getSY()); // makes hitbox for game object
+-> Copy r1, change all 1s to 2s // r2 is under r1
+-> Return r1.intersects(r2);
+
+- Create new package com.base.game
+- Move Game class into com.base.game package // a pop up window pops up and automatically refactors the code(updates the references of the Game class) 
+
+- Create new package com.base.game.gameobject
+-> Create new Player class which extends GameObject
+--> Import com.base.engine.GameObject
+--> Create constructor with parameters float x, float y
+---> Initialize this.x = x;
+---> Initialize this.y = y;
+
+- Goto GameObject class
+-> Replace private to protected for x, y & spr
+
+- Goto constructor in Player class
+-> Declare new Sprite temp
+-> Declare and Initialize new public static final SIZE = 32 // above constructor as a global variable
+-> Initialize temp = new Sprite(0.1f,1f,0.25f,SIZE,SIZE) // same line as when declared
+// Stopped at 15:10
 
 
 
