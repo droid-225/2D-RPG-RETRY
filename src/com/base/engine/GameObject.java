@@ -35,4 +35,10 @@ public abstract class GameObject {
 	public float getSY() {
 		return spr.getSY();
 	}
+	
+	protected void init(float x, float y, float r, float g, float b, float sx, float sy) {
+		this.x = x;
+		this.y = y;
+		this.spr = new Sprite(r, g, b, sx, sy);
+	}
 }

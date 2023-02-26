@@ -244,7 +244,73 @@ Video 1: 12/14/2022
 -> Declare new Sprite temp
 -> Declare and Initialize new public static final SIZE = 32 // above constructor as a global variable
 -> Initialize temp = new Sprite(0.1f,1f,0.25f,SIZE,SIZE) // same line as when declared
-// Stopped at 15:10
+-> Change temp to this.spr
+
+- Goto GameObject class
+-> Create new protected class init(x, y, r, g, b, sx, sy)
+
+- Goto Player class
+-> Replace code in constructor with init method
+-> Create new public class getInput()
+
+- Goto Game class
+-> Declare new private ArrayList<GameObject> objects
+-> Create constructor for Game class
+--> initialize objects
+-> Goto update method
+--> Create for(GameObject go : objects)
+---> go.update()
+-> Goto render method
+--> Create for(GameObject go : objects) 
+---> go.render() 
+-> Create new private Player object player
+-> Goto constructor
+--> Initialize player
+--> objects.add(player)
+
+- Goto Player class
+-> Goto getInput() method
+--> If W is pressed, move up 1
+--> If S is pressed, move down 1
+--> If A is pressed, move left 1
+--> If D is pressed, move right 1
+-> Create public getSpeed() method
+--> Return 4f
+-> Create private move(magX, magY) method
+--> x += getSpeed() * magX
+--> y += getSpeed() * magY
+-> Declare private float level
+-> Declare private float xp
+-> Goto constructor
+--> Initialize level = 1;
+--> Initialize xp = 0;
+-> Create public method addXP(float amt)
+--> xp += amt
+-> Declare private int health
+-> Goto constructor
+--> Initialize health = 10
+-> Create public method getMaxHealth() 
+--> return getLevel() * 10;
+-> Create public method getCurrentHealth()
+--> int max = getMaxHealth()
+--> if(health > max)
+---> health = max
+--> return health;
+-> Create public method getStrength()
+--> return getLevel() * 4f
+-> Create public method getMagic() 
+--> return getLevel() * 4f 
+-> Remove level variable
+-> Goto getLevel() method
+--> return (int)(xp / 50) + 1
+-> Create public method update()
+--> Print all stats through console
+-> Test out if XP works
+// END OF VIDEO 2
+
+
+
+
 
 
 
