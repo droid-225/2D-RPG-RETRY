@@ -7,12 +7,13 @@ import com.base.engine.Sprite;
 
 public class Player extends GameObject {
 	public static final float SIZE = 32;
+	public static final double LEVEL_CONST = 25 * Math.pow(3, (3.0/2.0)); // Bennny came up with this constant, don't know how
 
 	private int health;
 	private float xp;
 	
 	public Player(float x, float y) {
-		init(x, y, 0.1f, 1f, 0.25f, SIZE, SIZE);
+		init(x, y, 0.1f, 1f, 0.25f, SIZE, SIZE, 0);
 		health = 10;
 		xp = 0;
 	}
@@ -29,8 +30,7 @@ public class Player extends GameObject {
 	}
 	
 	public void update() {
-		System.out.println("Stats: Speed: " + getSpeed() + " Level: " + getLevel() + " Max HP: " 
-							+ getMaxHealth( ) + " Health: " + getCurrentHealth() + " Magic: " + getMagic() + " Strength: " + getStrength());
+		//System.out.println("Stats: Speed: " + getSpeed() + " Level: " + getLevel() + " Max HP: " + getMaxHealth( ) + " Health: " + getCurrentHealth() + " Magic: " + getMagic() + " Strength: " + getStrength());
 	}
 	
 	private void move(float magX, float magY) { // mag is short for magnitude
@@ -43,7 +43,13 @@ public class Player extends GameObject {
 	}
 	
 	public int getLevel() {
-		return (int)(xp / 50) + 1;
+		double x = xp + 105; //xp being calculated
+		
+		double a = Math.sqrt(243 * (x * x) + 4050 * x + 17500); // Benny has gone insane // Exponential function for xp
+		double c = (3 * x + 25) / 25; // Linear function for xp
+		double d = Math.cbrt(a / LEVEL_CONST + c); // Combine a and c, final xp algorithm
+		
+		return (int)(d - 1.0/d * 3) - 1;
 	}
 	
 	public int getMaxHealth() {

@@ -6,6 +6,7 @@ import org.lwjgl.opengl.Display;
 
 import com.base.engine.GameObject;
 import com.base.game.gameobject.Player;
+import com.base.game.gameobject.item.Cube;
 
 public class Game {
 	private ArrayList<GameObject> objects;
@@ -17,6 +18,7 @@ public class Game {
 		player = new Player(Display.getWidth() / 2 - player.SIZE / 2, Display.getHeight() / 2 - player.SIZE / 2);
 		
 		objects.add(player);
+		objects.add(new Cube(32, 32, player));
 	}
 	
 	public void getInput() {

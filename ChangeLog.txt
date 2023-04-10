@@ -308,6 +308,70 @@ Video 1: 12/14/2022
 -> Test out if XP works
 // END OF VIDEO 2
 
+// VIDEO 3
+- GOTO Player class
+- Create new constant double LEVEL_CONST
+-> GOTO getLevel() function
+-> Declare and initialize double x
+--> x = xp + 105
+-> Declare and initialize double a (Exponential function for xp)
+--> a = Math.sqrt(243 * (x * x) + 4050 * x + 17500)
+-> Declare and initialize double c (Linear function for xp)
+--> c = (3 * x + 25) / 25
+-> Declare and initialize double d (Final xp algorithm)
+--> d = Math.cbrt(a / LEVEL_CONST + c)
+-> return (int)(d - 1.0/d * 3) - 1
+// Fix this shit at some point if Benny doesn't
+- Create new package com.base.gameobject.item
+-> Create new Item class
+- GOTO GameObject class
+-> Declare new protected int type
+-> Add type variable to init function parameters
+--> GOTO init function
+---> this.type = type
+--> Create getType() method which returns int type
+- GOTO Player class
+-> GOTO Player constructor
+--> Add ", 0" to the init method parameters (setting Player as type 0)
+---> init(x, y, 0.1f, 1f, 0.25f, SIZE, SIZE, -> 0 <-)
+- GOTO Item class
+-> Declare new protected String name
+-> Create pickup() method
+-> Copy init method into Item class
+--> Change "int type" to "String name"
+--> GOTO init method
+---> this.type = 1
+---> this.name = name
+- Create class "Cube"
+-> GOTO Cube class
+--> Create constructor with parameters float x, float y
+--> GOTO constructor
+---> init(x, y, 1.0f, 0.5f, 0, SIZE, SIZE, "The Cube")
+--> Create new pickup() method
+--> GOTO pickup() method
+---> Print "You Just Picked Up " + name + "!"
+- GOTO Player class
+-> GOTO update method
+--> Comment out state print statement
+- GOTO Game class
+-> GOTO constructor
+--> objects.add(new Cube(32, 32))
+--> objects.add(new Cube(32, 32, Player))
+- GOTO Cube class
+-> GOTO constructor
+-> Add "Player player" to parameters
+--> this.player = player
+-> Declare new private Player player
+-> Create new update() method
+-> GOTO update() method
+--> if(Physics.checkCollision(this, player))
+---> pickup()
+// 23:55 Video 3
+
+
+ 
+
+
 
 
 
